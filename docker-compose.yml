@@ -18,6 +18,12 @@ services:
       - "8080:80"
     volumes:
       - ./public_html/:/var/www/html/
+  mysql:
+    image: mysql/mysql-server
+    networks:
+      - backend
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
 networks:
   frontend:
   backend:
