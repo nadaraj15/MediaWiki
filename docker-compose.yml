@@ -2,28 +2,35 @@ version: "3.2"
 services:
   php:
     build: './php/'
-    networks:
-      - backend
+#    networks:
+#      - backend
     volumes:
       - ./public_html/:/var/www/html/
   apache:
     build: './apache/'
     depends_on:
       - php
-      - mysql
-    networks:
-      - frontend
-      - backend
+#      - mysql
+#    networks:
+#      - frontend
+#      - backend
     ports:
       - "8080:80"
     volumes:
       - ./public_html/:/var/www/html/
-  mysql:
-    image: mysql/mysql-server
-    networks:
-      - backend
-    environment:
-      - MYSQL_ROOT_PASSWORD=rootpassword
-networks:
-  frontend:
-  backend:
+#  mysql:
+#    image: mysql/mysql-server
+#    networks:
+#      - backend
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=rootpassword
+#networks:
+#  frontend:
+    # Use a custom driver
+#    driver: custom-driver-1
+#  backend:
+    # Use a custom driver which takes special options
+#    driver: custom-driver-1
+#    driver_opts:
+#      foo: "1"
+#      bar: "2"
